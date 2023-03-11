@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "378173437960",
+    "project_id": "lovers-of-mary-and-jesus",
+    "storage_bucket": "lovers-of-mary-and-jesus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378173437960:android:37a0c51a4cbc691d2ff9bd",
+        "android_client_info": {
+          "package_name": "com.example.lomj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378173437960-19r4021ei6dd86p6eebutpcmf0pgsfmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9cQ81Z3bPpgUhfBAZoDiTnUAJweWpMJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "378173437960-19r4021ei6dd86p6eebutpcmf0pgsfmn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
