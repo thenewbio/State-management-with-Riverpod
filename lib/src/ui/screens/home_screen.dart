@@ -5,6 +5,7 @@ import 'package:lomj/state/auth/backend/authenticator.dart';
 import 'dart:developer' as devtools show log;
 
 import 'package:lomj/state/auth/providers/auth_state_provider.dart';
+import 'package:lomj/views/components/loading/loadingScreen.dart';
 
 extension Log on Object {
   void log() => devtools.log(toString());
@@ -23,6 +24,8 @@ class MainView extends StatelessWidget {
       body: Consumer(builder: (context, ref, child) {
         return TextButton(
             onPressed: () async {
+              // LoadingScreen.instance()
+              //     .show(context: context, text: "Loading...");
               await ref.read(authStateProvider.notifier).logOut();
             },
             child: const Text('Logout'));
