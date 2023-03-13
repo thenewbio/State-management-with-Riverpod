@@ -7,8 +7,17 @@ import 'package:lomj/src/ui/riverpod/example6.dart';
 import 'package:lomj/src/ui/riverpod/example2.dart';
 import 'package:lomj/src/ui/screens/home_screen.dart';
 // import 'package:lomj/src/ui/screens/onboarding_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:lomj/state/auth/models/auth_result.dart';
+import 'package:lomj/state/auth/providers/auth_state_provider.dart';
+import 'package:lomj/state/auth/providers/is_logged_in_provider.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -17,13 +26,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      darkTheme: ThemeData.dark(),
+      darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          primarySwatch: Colors.blueGrey,
+          indicatorColor: Colors.blueGrey),
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.blue,
+      ),
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       title: 'LOM',
-      // theme: ThemeData(primarySwatch: Colors.blue),
-      // home: const HomeScreen(),
-      home: const Example6(),
+      home: Consumer(builder: (context, ref, child) {
+        final isLoggedIn =
+            ref.watch(authStateProvider).result == AuthResult.success;
+        isLoggedIn.log();
+        if (isLoggedIn) {
+          return const MainView();
+        } else {
+          return const LoginView();
+        }
+      }),
     );
   }
 }
