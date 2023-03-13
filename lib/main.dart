@@ -11,6 +11,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:lomj/state/auth/models/auth_result.dart';
 import 'package:lomj/state/auth/providers/auth_state_provider.dart';
 import 'package:lomj/state/auth/providers/is_logged_in_provider.dart';
+import 'package:lomj/views/components/loading/loadingScreen.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -38,9 +39,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'LOM',
       home: Consumer(builder: (context, ref, child) {
-        final isLoggedIn =
-            ref.watch(authStateProvider).result == AuthResult.success;
+        ref.listen<bool>(isLoggedInProvider, (_, isLoading) {
+          if (isLoading) {
+            LoadingScreen.instance().show(
+              context: context,
+            );
+          } else {
+            LoadingScreen.instance().hide();
+          }
+        });
+        final isLoggedIn = ref.watch(isLoggedInProvider);
         isLoggedIn.log();
+
         if (isLoggedIn) {
           return const MainView();
         } else {
