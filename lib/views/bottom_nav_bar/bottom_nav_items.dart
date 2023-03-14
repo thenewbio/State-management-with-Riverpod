@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lomj/views/main_view.dart';
 
 class NavigatorItem {
   final String label;
@@ -10,7 +11,7 @@ class NavigatorItem {
 }
 
 List<NavigatorItem> navigatorItems = [
-  NavigatorItem("Home", "assets/images/homee.png", 0, Container()),
+  NavigatorItem("Home", "assets/images/homee.png", 0, const MainView()),
   NavigatorItem("Wallet", "assets/images/wallet1.png", 1, Container()),
   NavigatorItem("Add", "assets/images/adds.png", 2, Container()),
   NavigatorItem("Chat", "assets/images/messaging.png", 3, Container()),

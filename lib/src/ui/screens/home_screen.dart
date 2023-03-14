@@ -1,38 +1,38 @@
-import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:lomj/state/auth/backend/authenticator.dart';
+// import 'package:flutter/material.dart';
+// import 'package:hooks_riverpod/hooks_riverpod.dart';
+// import 'package:lomj/state/auth/backend/authenticator.dart';
 
-import 'dart:developer' as devtools show log;
+// import 'dart:developer' as devtools show log;
 
-import 'package:lomj/state/auth/providers/auth_state_provider.dart';
-import 'package:lomj/views/components/loading/loadingScreen.dart';
+// import 'package:lomj/state/auth/providers/auth_state_provider.dart';
+// import 'package:lomj/views/components/loading/loadingScreen.dart';
 
-extension Log on Object {
-  void log() => devtools.log(toString());
-}
+// extension Log on Object {
+//   void log() => devtools.log(toString());
+// }
 
-class MainView extends StatelessWidget {
-  const MainView({super.key});
+// class MainView extends StatelessWidget {
+//   const MainView({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Main View'),
-      ),
-      body: Consumer(builder: (context, ref, child) {
-        return TextButton(
-            onPressed: () async {
-              // LoadingScreen.instance()
-              //     .show(context: context, text: "Loading...");
-              await ref.read(authStateProvider.notifier).logOut();
-            },
-            child: const Text('Logout'));
-      }),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         centerTitle: true,
+//         title: const Text('Main View'),
+//       ),
+//       body: Consumer(builder: (context, ref, child) {
+//         return TextButton(
+//             onPressed: () async {
+//               // LoadingScreen.instance()
+//               //     .show(context: context, text: "Loading...");
+//               await ref.read(authStateProvider.notifier).logOut();
+//             },
+//             child: const Text('Logout'));
+//       }),
+//     );
+//   }
+// }
 
 // class LoginView extends ConsumerWidget {
 //   const LoginView({

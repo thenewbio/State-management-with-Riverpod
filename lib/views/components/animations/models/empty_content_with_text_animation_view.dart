@@ -12,12 +12,13 @@ class EmptyContentAnimationWihText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             text,
             style: Theme.of(context)
                 .textTheme
-                .titleLarge
+                .titleMedium
                 ?.copyWith(color: Colors.white54),
           ),
           const EmptyContentAnimationView()
