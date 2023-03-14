@@ -13,7 +13,7 @@ import 'package:lomj/state/image_upload/extensions/get_image_data_aspect_ratio.d
 import 'package:lomj/state/image_upload/models/file_type.dart';
 import 'package:lomj/state/post/models/post_payload.dart';
 import 'package:lomj/state/post_settings/models/post_setting.dart';
-
+import 'package:lomj/state/image_upload/typedefs/is_loading.dart';
 import 'package:uuid/uuid.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
 

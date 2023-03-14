@@ -6,10 +6,14 @@ import 'package:lomj/state/auth/backend/authenticator.dart';
 import 'dart:developer' as devtools show log;
 
 import 'package:lomj/state/auth/providers/auth_state_provider.dart';
+import 'package:lomj/state/image_upload/helpers/image_picker_helper.dart';
+import 'package:lomj/state/image_upload/models/file_type.dart';
+import 'package:lomj/state/post_settings/providers/post_setting_provider.dart';
 import 'package:lomj/views/components/dialogs/alert_dialog_model.dart';
 import 'package:lomj/views/components/dialogs/logout_dialog.dart';
 import 'package:lomj/views/components/loading/loadingScreen.dart';
 import 'package:lomj/views/constants/strings.dart';
+import 'package:lomj/views/create_new_post/create_new_post_view.dart';
 import 'package:lomj/views/tabs/users_posts_user_post_view.dart';
 
 extension Log on Object {
@@ -32,11 +36,45 @@ class _MainViewState extends ConsumerState<MainView> {
           title: const Text(Strings.appName),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () async {
+                final videoFile =
+                    await ImagePickerHelper.pickerVideoFromGallery();
+                if (videoFile == null) {
+                  return;
+                }
+                ref.refresh(postSettingProvider);
+                if (!mounted) {
+                  return;
+                }
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(
+                    builder: (_) => CreateNewPostView(
+                          fileToPost: videoFile,
+                          fileType: FileType.video,
+                        )));
+              },
               icon: const FaIcon(FontAwesomeIcons.film),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () async {
+                final imageFile =
+                    await ImagePickerHelper.pickerImageFromGallery();
+                if (imageFile == null) {
+                  return;
+                }
+                ref.refresh(postSettingProvider);
+                if (!mounted) {
+                  return;
+                }
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(
+                    builder: (_) => CreateNewPostView(
+                          fileToPost: imageFile,
+                          fileType: FileType.image,
+                        )));
+              },
               icon: const Icon(Icons.add_photo_alternate_outlined),
             ),
             IconButton(
