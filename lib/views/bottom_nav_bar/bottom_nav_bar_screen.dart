@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lomj/src/ui/screens/bottom_nav_bar/bottom_nav_items.dart';
+import 'package:lomj/views/bottom_nav_bar/bottom_nav_items.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});

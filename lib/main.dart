@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:lomj/src/ui/riverpod/example3.dart';
-import 'package:lomj/src/ui/riverpod/example4.dart';
-import 'package:lomj/src/ui/riverpod/example5.dart';
-import 'package:lomj/src/ui/riverpod/example6.dart';
-import 'package:lomj/src/ui/riverpod/example2.dart';
+
 import 'package:lomj/src/ui/screens/home_screen.dart';
 // import 'package:lomj/src/ui/screens/onboarding_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:lomj/state/auth/models/auth_result.dart';
-import 'package:lomj/state/auth/providers/auth_state_provider.dart';
+
 import 'package:lomj/state/auth/providers/is_logged_in_provider.dart';
+import 'package:lomj/views/components/animations/models/data_not_found_animation_view.dart';
 import 'package:lomj/views/components/loading/loadingScreen.dart';
+import 'package:lomj/views/login/login_view.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -54,7 +51,7 @@ class MyApp extends StatelessWidget {
         if (isLoggedIn) {
           return const MainView();
         } else {
-          return const LoginView();
+          return const DataNotFoundAnimationView();
         }
       }),
     );

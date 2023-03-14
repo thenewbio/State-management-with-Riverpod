@@ -34,35 +34,35 @@ class MainView extends StatelessWidget {
   }
 }
 
-class LoginView extends ConsumerWidget {
-  const LoginView({
-    Key? key,
-  }) : super(key: key);
+// class LoginView extends ConsumerWidget {
+//   const LoginView({
+//     Key? key,
+//   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('LoginView'),
-      ),
-      body: Column(
-        children: [
-          TextButton(
-              onPressed: () {
-                ref.read(authStateProvider.notifier).loginWithGoogle();
-                // final result = await const Authenticator().loginWithGoogle();
-                // result.log();
-              },
-              child: const Text('Sign in with Gooogle')),
-          TextButton(
-              onPressed: () {
-                ref.read(authStateProvider.notifier).loginWithFacebook();
-                // final result = await Authenticator().loginWithFacebook();
-                // result.log();
-              },
-              child: const Text('Sign in with Facebook'))
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('LoginView'),
+//       ),
+//       body: Column(
+//         children: [
+//           TextButton(
+//               onPressed: () {
+//                 ref.read(authStateProvider.notifier).loginWithGoogle();
+//                 // final result = await const Authenticator().loginWithGoogle();
+//                 // result.log();
+//               },
+//               child: const Text('Sign in with Gooogle')),
+//           TextButton(
+//               onPressed: () {
+//                 ref.read(authStateProvider.notifier).loginWithFacebook();
+//                 // final result = await Authenticator().loginWithFacebook();
+//                 // result.log();
+//               },
+//               child: const Text('Sign in with Facebook'))
+//         ],
+//       ),
+//     );
+//   }
+// }
