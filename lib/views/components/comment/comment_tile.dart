@@ -6,6 +6,7 @@ import 'package:lomj/state/comments/providers/delete_comment_provider.dart';
 import 'package:lomj/state/user_info/providers/user_info_provider.dart';
 import 'package:lomj/views/components/animations/models/small_error_animation_view.dart';
 import 'package:lomj/views/components/constants/strings.dart';
+import 'package:lomj/views/components/dialogs/alert_dialog_model.dart';
 import 'package:lomj/views/components/dialogs/delete_dialog.dart';
 
 class CommentTile extends ConsumerWidget {
