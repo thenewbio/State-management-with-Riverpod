@@ -13,11 +13,26 @@ final postLikesCountProvider =
     controller.sink.add(0);
   };
 
-  final  sub = FirebaseFirestore.instance
-  .collection(FirebaseCollectionName.likes,)
-  .where(FirebaseFieldName.postId, isEqualTo: postId,)
-  .snapshots()
-  .listen((snapshot) { 
-    controller.sink.add(snapshot.docs.length,);
-  })
+  final sub = FirebaseFirestore.instance
+      .collection(
+        FirebaseCollectionName.likes,
+      )
+      .where(
+        FirebaseFieldName.postId,
+        isEqualTo: postId,
+      )
+      .snapshots()
+      .listen(
+    (snapshot) {
+      controller.sink.add(
+        snapshot.docs.length,
+      );
+    },
+  );
+  ref.onDispose(() {
+    sub.cancel();
+    controller.close();
+  });
+
+  return controller.stream;
 });

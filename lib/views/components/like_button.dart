@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lomj/state/auth/providers/user_id_provider.dart';
+import 'package:lomj/state/likes/models/like_dislike_request.dart';
+import 'package:lomj/state/likes/providers/has_like_provider.dart';
+import 'package:lomj/state/likes/providers/like_dislike_post_provider.dart';
 import 'package:lomj/state/post/typedefs/post_id.dart';
+import 'package:lomj/views/components/animations/models/small_error_animation_view.dart';
 
 class LikeButton extends ConsumerWidget {
   final PostId postId;
@@ -33,14 +37,14 @@ class LikeButton extends ConsumerWidget {
             );
             ref.read(
               likeDislikePostProvider(
-                request: likeRequest,
+                likeRequest,
               ),
             );
           },
         );
       },
       error: (error, stackTrace) {
-        return Container();
+        return const SmallErrorAnimationView();
       },
       loading: () {
         return const Center(

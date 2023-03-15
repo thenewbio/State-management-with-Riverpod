@@ -3,11 +3,24 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lomj/enums/date_sorting.dart';
 import 'package:lomj/state/comments/models/post_comments_request.dart';
 import 'package:lomj/state/post/models/post.dart';
+import 'package:lomj/state/post/providers/can_current_user_delete_post_provider.dart';
+import 'package:lomj/state/post/providers/delete_post_provider.dart';
+import 'package:lomj/state/post/providers/specific_post_with_comments_provider.dart';
 import 'package:lomj/views/components/animations/models/error_animation_view.dart';
 import 'package:lomj/views/components/animations/models/loading_animation_view.dart';
 import 'package:lomj/views/components/animations/models/small_error_animation_view.dart';
+import 'package:lomj/views/components/comment/compact_coment_column.dart';
+import 'package:lomj/views/components/dialogs/alert_dialog_model.dart';
+import 'package:lomj/views/components/dialogs/delete_dialog.dart';
+import 'package:lomj/views/components/like_button.dart';
+import 'package:lomj/views/components/likes_count_view.dart';
+import 'package:lomj/views/components/post/post_display_image_and_mesaage_view.dart';
+import 'package:lomj/views/components/post/post_image%20_or_video_view.dart';
 import 'package:lomj/views/constants/strings.dart';
+import 'package:lomj/views/post_comments/post_comments_view.dart';
 import 'package:share_plus/share_plus.dart';
+
+import '../components/post/post_date_view.dart';
 
 class PostDetailsView extends ConsumerStatefulWidget {
   final Post post;
@@ -26,7 +39,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
   Widget build(BuildContext context) {
     final request = RequestForPostAndComments(
       postId: widget.post.postId,
-      limit: 3, // at most 3 comments
+      limit: 2, // at most 3 comments
       sortByCreatedAt: true,
       dateSorting: DateSorting.oldestOnTop,
     );
@@ -79,7 +92,7 @@ class _PostDetailsViewState extends ConsumerState<PostDetailsView> {
             IconButton(
               icon: const Icon(Icons.delete),
               onPressed: () async {
-                final shouldDeletePost = await const DeleteDialog(
+                final shouldDeletePost = await const DeletedDialog(
                         titleOfObjectToDelete: Strings.post)
                     .present(context)
                     .then((shouldDelete) => shouldDelete ?? false);
