@@ -1,4 +1,5 @@
-# State Management in flutter Using Riverpod By vandad Nahavandipoor
+# State Management in flutter Using Riverpod
+
 
 A new Flutter project.
 
